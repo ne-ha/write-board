@@ -11,7 +11,7 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = current_user.notes.create(notes_params)
+    #@note = current_user.notes.create(notes_params)
   end
 
   def edit
