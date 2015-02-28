@@ -24,3 +24,33 @@ body
 {
   
 }
+
+.center-block {
+  display: block;
+  margin-left: 370px;
+  margin-right: 370px;
+}
+
+.form-control
+{
+  padding: 9px -14px 5px 15px;
+  margin: 31px 30px 24px 0px;
+  font-size: 20px;
+
+}
+
+.form-horizontal .control-label
+{
+  text-align: left;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  font-size: 18px;
+}
+
+.form-horizontal .btn
+{
+  float: right;
+  margin: 0px -15px;
+}
+
+
