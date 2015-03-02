@@ -7,11 +7,11 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = Note.find(params[:id])
+    @note = current_user.notes.find(params[:id])
   end
 
   def new
-    @note = current_user.notes.new
+    @note = current_user.notes.new  
   end
 
   def create
@@ -51,6 +51,10 @@ class NotesController < ApplicationController
       flash[:notice] = "Note cannot be deleted."
     end
     redirect_to(root_path)
+  end
+
+  def share_note
+    @note = Note.find(params[:note_id])
   end
 
   private
