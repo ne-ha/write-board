@@ -17,7 +17,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $("#share_to").click(function({
+  $("#share_to").click(function(){
     $("#shareModal").modal("show");
   });
 });
