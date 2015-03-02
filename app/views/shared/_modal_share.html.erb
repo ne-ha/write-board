@@ -6,11 +6,15 @@
         <h4 class="modal-title" id="myModalLabel">Share To</h4>
       </div>
       <div class="modal-body">
-          
+          <% form_for :url=>{:action =>'share_note'} do |f|%>
+            <%= f.label('Share To')%>
+            <%= f.text_field(:share_to)%>
+            <%= f.submit 'S'%>
+          <% end %>
       </div>
        <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button> -->
         </div>       
     </div>
   </div>
