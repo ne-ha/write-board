@@ -4,7 +4,13 @@
 
 <ul>
   <% @notes.each do |note| %>
-    <li><%= note.title %><%= link_to 'Edit', edit_note_path(note.id) %>
-    <%= link_to 'Delete', note_path(note), :method => 'delete' %></li>
+    <li><%= note.title %>
+      <div class="btn btn-default">
+        <%= link_to 'Edit', edit_note_path(note.id) %>
+      </div>
+      <div class="btn btn-default">
+        <%= link_to 'Delete', note_path(note), :method => 'delete' %>
+      </div>
+    </li>
   <% end %>
 </ul
