@@ -17,10 +17,10 @@ class NotesController < ApplicationController
   def create
     @note = current_user.notes.create(note_params)
     if @note.save
-      flash[:success] = "Notes created successfully."
+      flash[:success] = "Note created successfully."
       redirect_to(root_path)
     else
-      flash[:notice] = "Notes cannot be created."
+      flash[:notice] = "Note cannot be created."
       render :new
     end
   end
@@ -32,10 +32,10 @@ class NotesController < ApplicationController
   def update
     @note = current_user.notes.find(params[:id])
     if @note.update_attributes(note_params)
-      flash[:success] = "Notes edited successfully."
+      flash[:success] = "Note edited successfully."
       redirect_to(root_path)
     else
-      flash[:notice] = "Notes cannot be edited."
+      flash[:notice] = "Note cannot be edited."
       render :edit
     end
   end
@@ -44,6 +44,13 @@ class NotesController < ApplicationController
   end
 
   def destroy
+    @note = current_user.notes.find(params[:id])
+    if @note.destroy
+      flash[:success] = "Note deleted successfully."
+    else
+      flash[:notice] = "Note cannot be deleted."
+    end
+    redirect_to(root_path)
   end
 
   private
