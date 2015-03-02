@@ -7,11 +7,21 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = current_user.notes.where(:id=> params[:id])
+  end
+
+  def new
+    @note = current_user.notes.new
   end
 
   def create
-    #@note = current_user.notes.create(notes_params)
+    @note = current_user.notes.create(note_params)
+    if @note.save
+      flash[:success] = "Notes created successfully."
+      redirect_to(root_path)
+    else
+      flash[:notice] = "Notes cannot be created."
+      redirect_to(new_note_path)
+    end
   end
 
   def edit
@@ -27,7 +37,8 @@ class NotesController < ApplicationController
   end
 
   private
-    def notes_params
-      params.require(:note).permit(:title, :body)
+  
+    def note_params
+      params.require(:note).permit(:title, :description)
     end
 end
