@@ -16,6 +16,7 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.notes.create(note_params)
+    @note.owner = 'true'
     if @note.save
       flash[:success] = "Note created successfully."
       redirect_to(root_path)
