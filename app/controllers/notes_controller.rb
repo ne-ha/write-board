@@ -7,6 +7,7 @@ class NotesController < ApplicationController
   end
 
   def show
+    @note = Note.find(params[:id])
   end
 
   def new
@@ -20,14 +21,23 @@ class NotesController < ApplicationController
       redirect_to(root_path)
     else
       flash[:notice] = "Notes cannot be created."
-      redirect_to(new_note_path)
+      render :new
     end
   end
 
   def edit
+    @note =  current_user.notes.find(params[:id])
   end
 
   def update
+    @note = current_user.notes.find(params[:id])
+    if @note.update_attributes(note_params)
+      flash[:success] = "Notes edited successfully."
+      redirect_to(root_path)
+    else
+      flash[:notice] = "Notes cannot be edited."
+      render :edit
+    end
   end
 
   def delete
