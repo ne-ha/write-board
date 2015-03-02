@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :notes do
-    get 'share_note'
+    post 'share_note'
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
