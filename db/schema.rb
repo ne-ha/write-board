@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20150302080540) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "owner"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "owner",       default: true
   end
 
   create_table "notes_users", force: :cascade do |t|
@@ -47,13 +47,5 @@ ActiveRecord::Schema.define(version: 20150302080540) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "users_and_notes", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "note_id"
-  end
-
-  add_index "users_and_notes", ["note_id"], name: "index_users_and_notes_on_note_id"
-  add_index "users_and_notes", ["user_id"], name: "index_users_and_notes_on_user_id"
 
 end
