@@ -46,11 +46,11 @@ class NotesController < ApplicationController
 
   def destroy
     @note = current_user.notes.find(params[:id])
-    if @note.owner === 'true'
+    if @note.owner == 'true'
       @note.destroy
       flash[:success] = "Note deleted successfully."
     else
-        flash[:notice] = "Note cannot be deleted."
+      flash[:notice] = "Note cannot be deleted."
     end
     redirect_to(root_path)
   end
