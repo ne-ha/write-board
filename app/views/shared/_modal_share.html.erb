@@ -5,15 +5,14 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Share To</h4>
       </div>
-      <div class="modal-body">fdgfdgfdg
-        <%# form_for(@note) do |f|%>
-          <%##= label('Share To')%>
-          <%#= text_field(:share_to)%>
-          <button type="button" class="btn btn-default" data-dismiss="modal">
-            <%##= submit_tag 'Share'%>
-          </button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <%#end %>
+      <div class="modal-body">
+        <%= form_for :share, :url => note_share_note_path do |f| %>
+          <div class="form-group">
+            Share To : <%= f.text_field :share_to%>  
+          </div>       
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <%= f.submit "Share" %>
+        <%end %>
       </div>
     </div>
   </div>
