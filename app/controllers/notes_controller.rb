@@ -27,13 +27,17 @@ class NotesController < ApplicationController
   end
 
   def edit
-    @note =  current_user.my_notes.find(params[:id])
+    @note =  current_user.notes.find(params[:id])
   end
 
   def update
-    @note = current_user.my_notes.find(params[:id])
+    @note = current_user.notes.find(params[:id])
     if @note.update_attributes(note_params)
-      flash[:success] = "Note edited successfully."
+      if params[:commit] == 'Share'
+        flash[:success] = "Note is shared with other users."
+      else
+        flash[:success] = "Note edited successfully."
+      end
       redirect_to(root_path)
     else
       flash[:notice] = "Note cannot be edited."
@@ -45,8 +49,8 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    @note = current_user.my_notes.find(params[:id])
-    if @note.owner == true
+    @note = current_user.my_notes.find_by_id(params[:id])
+    if @note.present?
       @note.destroy
       flash[:success]= "Note deleted successfully."
     else
