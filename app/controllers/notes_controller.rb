@@ -16,7 +16,6 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.notes.create(note_params)
-    @note.owner = 'true'
     if @note.save
       flash[:success] = "Note created successfully."
       redirect_to(root_path)
@@ -46,11 +45,11 @@ class NotesController < ApplicationController
 
   def destroy
     @note = current_user.notes.find(params[:id])
-    if @note.owner == 'true'
+    if @note.owner == true
       @note.destroy
-      flash[:success] = "Note deleted successfully."
+      flash[:success]= "Note deleted successfully."
     else
-      flash[:notice] = "Note cannot be deleted."
+      flash[:notice] = "Only the creator can delete this note."
     end
     redirect_to(root_path)
   end
