@@ -2,6 +2,8 @@ class NotesController < ApplicationController
 
   before_action :authenticate_user!
 
+  autocomplete :user, :email, :full => true
+
   def index
     @notes = current_user.notes
   end
