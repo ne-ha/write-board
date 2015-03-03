@@ -4,9 +4,9 @@
   <% @notes.each do |note| %>
     <li>
       <%= note.title %>
-      <%= link_to 'Show',note_path(note.id), class: "btn btn-default" %>
-      <%= link_to 'Delete', note_path(note), :method => 'delete', data: {confirm: "Are you sure?"}, class: "btn btn-default"  %>
-      <%= link_to 'Share',note_share_note_path(note.id), :remote=>true , class: "btn btn-default" %>
+      <%= link_to 'Show',note_path(note.id), class: "btn btn-default btn-sm" %>
+      <%= link_to 'Delete', note_path(note), :method => 'delete', data: {confirm: "Are you sure?"}, class: "btn btn-default btn-sm"  %>
+      <%= link_to 'Share',note_share_note_path(note.id), :remote=>true , class: "btn btn-default btn-sm" %>
      </li>
   <% end %>
 </ul>
