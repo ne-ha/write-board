@@ -2,6 +2,8 @@ class NotesController < ApplicationController
 
   before_action :authenticate_user!
 
+  respond_to :html, :json
+
   def index
     @notes = current_user.notes
   end
@@ -31,14 +33,15 @@ class NotesController < ApplicationController
   end
 
   def update
+    @notes = current_user.notes
     @note = current_user.notes.find(params[:id])
     if @note.update_attributes(note_params)
       if params[:commit] == 'Share'
         flash[:success] = "Note is shared with other users."
+        redirect_to(root_path)
       else
-        flash[:success] = "Note edited successfully."
+        respond_with @note
       end
-      redirect_to(root_path)
     else
       flash[:notice] = "Note cannot be edited."
       render :edit
