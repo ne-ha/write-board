@@ -13,12 +13,13 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = current_user.notes.new  
+    @note = current_user.my_notes.new  
   end
 
   def create
-    @note = current_user.notes.create(note_params)
+    @note = current_user.my_notes.create(note_params)
     if @note.save
+      @note.users << current_user
       flash[:success] = "Note created successfully."
       redirect_to(root_path)
     else
@@ -28,11 +29,11 @@ class NotesController < ApplicationController
   end
 
   def edit
-    @note =  current_user.notes.find(params[:id])
+    @note =  current_user.my_notes.find(params[:id])
   end
 
   def update
-    @note = current_user.notes.find(params[:id])
+    @note = current_user.my_notes.find(params[:id])
     if @note.update_attributes(note_params)
       flash[:success] = "Note edited successfully."
       redirect_to(root_path)
@@ -46,7 +47,7 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    @note = current_user.notes.find(params[:id])
+    @note = current_user.my_notes.find(params[:id])
     if @note.owner == true
       @note.destroy
       flash[:success]= "Note deleted successfully."
@@ -61,8 +62,7 @@ class NotesController < ApplicationController
   end
 
   private
-  
-    def note_params
-      params.require(:note).permit(:title, :description)
-    end
+  def note_params
+    params.require(:note).permit(:title, :description, :user_ids => [])
+  end
 end
