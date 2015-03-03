@@ -1,4 +1,16 @@
-<div class="btn btn-default">
-    <%= link_to 'Back', root_path %>
-</div>
-<%= render :partial => 'form' %>
+<%= link_to 'Back', root_path, class: "btn btn-default" %>
+<%= form_for(@note) do |f| %>
+  <table class="new">
+    <tr>
+      <th><%= f.label(:title, "Title") %></th>
+      <td><%= f.text_field(:title) %></td>
+    </tr>
+    <tr>
+      <th><%= f.label(:description, "Description") %></th>
+      <td><%= f.text_area(:description)%></td>
+    </tr>
+    <tr>
+      <th><%= f.submit 'Save', class: "btn btn-default"%></th>
+    </tr>
+  </table>
+<%end%>
