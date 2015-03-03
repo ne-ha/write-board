@@ -7,12 +7,11 @@
       </div>
       <div class="modal-body">
         <%= form_for :note, :url => note_path(note.id) ,:html => {:method => "patch" }  do |f| %>
-          <%#= f.hidden_field :note_id %>
           <div class="form-group">
-            Share With :<%= collection_check_boxes(:note, :user_ids, User.all, :id, :email)
- %>
+            Share With :
+            <%= collection_check_boxes(:note, :user_ids, User.all, :id, :email)%> 
           </div>       
-          <%= f.submit "Share" %>
+          <%= f.submit "Share", class: "btn btn-default" %>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         <% end %>
       </div>
