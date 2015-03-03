@@ -6,7 +6,7 @@
         <h4 class="modal-title" id="myModalLabel">Share To</h4>
       </div>
       <div class="modal-body">
-        <%= form_for :note, :url => note_path, method: :patch do |f| %>
+        <%= form_for :note, :url => note_path(note.id) ,:html => {:method => "patch" }  do |f| %>
           <%#= f.hidden_field :note_id %>
           <div class="form-group">
             Share To :<%= f.select :share_with, User.all.map { |u| [u.email, u.id] },
