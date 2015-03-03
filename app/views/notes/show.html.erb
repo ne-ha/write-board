@@ -1,13 +1,8 @@
 <%= link_to 'Back', root_path, class: "btn btn-default"  %>
 
-<table class="table" style="width:30%; margin-top: 25px;">
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><%= best_in_place @note, :title %></td>
-    <td><%=best_in_place @note, :description, type: :textarea %></td>
-  </tr>
-</table>
+<ul>
+  <li><%= best_in_place @note, :title %></li>
+  <li><%=best_in_place @note, :description, type: :textarea %></li>
+</ul>
+
 
