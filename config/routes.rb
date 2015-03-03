@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :notes do
     get 'share_note'
+    get :autocomplete_user_email, :on => :collection
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
