@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302165603) do
+ActiveRecord::Schema.define(version: 20150303085442) do
 
   create_table "notes", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150302165603) do
     t.datetime "updated_at",                 null: false
     t.boolean  "owner",       default: true
     t.text     "share_with"
+    t.integer  "owner_id"
   end
 
   create_table "notes_users", force: :cascade do |t|
