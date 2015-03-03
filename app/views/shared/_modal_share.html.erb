@@ -9,9 +9,8 @@
         <%= form_for :note, :url => note_path(note.id) ,:html => {:method => "patch" }  do |f| %>
           <%#= f.hidden_field :note_id %>
           <div class="form-group">
-            Share To :<%= f.select :share_with, User.all.map { |u| [u.email, u.id] },
-               { include_blank: true },
-               { class: 'chosen-select' }%>
+            Share With :<%= collection_check_boxes(:note, :user_ids, User.all, :id, :email)
+ %>
           </div>       
           <%= f.submit "Share" %>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
