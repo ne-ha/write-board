@@ -6,14 +6,16 @@
         <h4 class="modal-title" id="myModalLabel">Share To</h4>
       </div>
       <div class="modal-body">
-        <%= form_for :share, :url => note_share_note_path do |f| %>
-            <%= f.hidden_field :note_id %>
+        <%= form_for :note, :url => note_path, method: :patch do |f| %>
+          <%#= f.hidden_field :note_id %>
           <div class="form-group">
-            Share To : <%= f.text_field :share_to%>  
+            Share To :<%= f.select :share_with, User.all.map { |u| [u.email, u.id] },
+               { include_blank: true },
+               { class: 'chosen-select' }%>
           </div>       
-            <%= f.submit "Share" %>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <%end %>
+          <%= f.submit "Share" %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <% end %>
       </div>
     </div>
   </div>
