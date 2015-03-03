@@ -17,3 +17,8 @@
 //= require_tree .
 //= require chosen-jquery
 
+jQuery(function($){
+    $('.chosen-select').chosen();
+});
+
+
