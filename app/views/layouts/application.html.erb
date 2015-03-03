@@ -11,7 +11,10 @@
 <%= render 'layouts/user_widget' %><br />
   <%= flash[:success]%><br />
   <%= flash[:notice]%><br />
-<%= yield %>
+  
+  <div id="content">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
