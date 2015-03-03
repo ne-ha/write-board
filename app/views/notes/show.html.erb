@@ -7,8 +7,8 @@
     <th>Description</th>
   </tr>
   <tr>
-    <td><%=@note.title%></td>
-    <td><%=@note.description%></td>
+    <td><%= best_in_place @note, :title %></td>
+    <td><%=best_in_place @note, :description, type: :textarea %></td>
   </tr>
 </table>
 
