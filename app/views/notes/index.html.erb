@@ -1,15 +1,16 @@
 <%= link_to 'Add Notes', new_note_path , class: "btn btn-default" %>
 
-<ul>
+<table class ="table table-bordered">
+  <tr>
+    <th>Note Title</th>
+    <th>Actions</th>
+  </tr>
   <% @notes.each do |note| %>
-    <li>
-      <%= note.title %>
-      <%= link_to 'Show',note_path(note.id), class: "btn btn-default btn-sm" %>
-      <%= link_to 'Delete', note_path(note), :method => 'delete', data: {confirm: "Are you sure?"}, class: "btn btn-default btn-sm"  %>
-      <%= link_to 'Share',note_share_note_path(note.id), :remote=>true , class: "btn btn-default btn-sm" %>
-     </li>
+  <tr>
+    <td><%= note.title %> </td>
+    <td><%= link_to 'Show',note_path(note.id), class: "btn btn-default btn-sm" %> <%= link_to 'Delete', note_path(note), :method => 'delete', data: {confirm: "Are you sure?"}, class: "btn btn-default btn-sm" %> <%= link_to 'Share',note_share_note_path(note.id), :remote=>true , class: "btn btn-default btn-sm" %></td>
   <% end %>
-</ul>
+</table>
 
 
 <div id = "modal">
