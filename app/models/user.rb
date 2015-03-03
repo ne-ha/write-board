@@ -6,8 +6,4 @@ class User < ActiveRecord::Base
 
   has_many :notes
 
-  create_table :user do |t|
-    t.column :email, :string
-  end
-
 end
