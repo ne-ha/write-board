@@ -6,6 +6,11 @@ describe "log in", :type=> :feature do
     user = FactoryGirl.create(:user)
   end
 
+  it "should have an email" do
+    user = FactoryGirl.create(:user, email:"user@example.com")
+    expect(user.email).to eq("user@example.com")
+  end
+
   it "sigin in " do
     visit "/users/sign_in"
     within("#new_user") do
