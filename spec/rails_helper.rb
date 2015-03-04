@@ -2,8 +2,6 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
-require 'factory_girl-rails'
-require "#{Rails.root}/spec/factories.rb"
 require 'spec_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
