@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @notes = current_user.notes
+    @notes = Kaminari.paginate_array(current_user.notes).page(params[:page]).per(10)
   end
 
   def show
