@@ -6,6 +6,7 @@ Warden.test_mode!
 describe "adding notes", :type=> :feature, :js => true do
 
   before :each do
+    User.destroy_all
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user)
   end

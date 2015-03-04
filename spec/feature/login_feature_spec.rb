@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "log in", :type=> :feature do
 
   before :each do
+    User.destroy_all
     user = FactoryGirl.create(:user)
   end
 
