@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20150303092650) do
   create_table "notes", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "owner",       default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "owner",       default: false
     t.text     "share_with"
     t.integer  "owner_id"
     t.integer  "user_id"
