@@ -1,8 +1,8 @@
 <%= link_to 'Back', root_path, class: "btn btn-default"  %>
 
 <ul>
-  <li><%= best_in_place @note, :title %></li>
-  <li><%=best_in_place @note, :description, type: :textarea %></li>
+  <li>Title : <%= best_in_place @note, :title %></li>
+  <li>Description : <%=best_in_place @note, :description, type: :textarea %></li>
 </ul>
 
 
