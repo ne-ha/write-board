@@ -1,10 +1,8 @@
 FactoryGirl.define do 
-  factory :user do |f| 
-    f.sequence :email do |e|
-      "user#{e}@example.com"
-    end
-    f.password "secretpassword"
-    f.password_confirmation "secretpassword"
+  factory :user do 
+    email "test@example.com"
+    password "secretpassword"
+    password_confirmation "secretpassword"
   end
 
   factory :note do
