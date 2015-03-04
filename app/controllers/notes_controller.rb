@@ -22,6 +22,9 @@ class NotesController < ApplicationController
       @note.users << current_user
       flash[:success] = "Note created successfully."
       redirect_to(root_path)
+    elsif @note.title.empty?
+      flash[:notice] = "Title cannot be empty."
+      render :new
     else
       flash[:notice] = "Note cannot be created."
       render :new
