@@ -18,6 +18,7 @@ gem 'chosen-rails'
 gem 'jquery-ui-rails'
 gem 'rails4-autocomplete'
 # Use jquery as the JavaScript library
+gem 'kaminari'
 gem 'best_in_place'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
