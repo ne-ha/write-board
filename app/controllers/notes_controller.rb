@@ -18,6 +18,7 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.my_notes.create(note_params)
+    @note.owner = true
     if @note.save
       @note.users << current_user
       flash[:success] = "Note created successfully."
