@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  # devise_for :users, controllers: { confirmations: "confirmations" } do
+  #   put "confirm_user", to: "confirmations#confirm_user"
+  #   get "confirmation", to: "confirmations#show"
+  # end
+  devise_for :users, :controllers => {:confirmations => 'confirmations'}
+
+  devise_scope :user do
+    patch "/confirm" => "confirmations#confirm"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
